@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: hivammathur/setup-php@v2
+      - uses: shivammathur/setup-php@v2
         with:
           php-version: 8.1
           extensions: intl, mbstring, zip, gd, pdo_mysql, curl, xml, dom, json, opcache, xdebug
@@ -21,4 +21,3 @@ jobs:
           tools: composer:v2
       - run: composer install
       - run: rsync -rzcEl . root@143.198.179.23:/var/www/html --exclude-from=".rsyncignore" --checksum --delete
-      
