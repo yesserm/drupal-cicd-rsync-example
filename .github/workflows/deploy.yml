@@ -20,15 +20,15 @@ jobs:
           coverage: none
           tools: composer:v2
       - run: composer install
-    - name: Add identity file
-      run: echo "${{ secrets.PRIVATE_KEY }}" >> $HOME/deploy.key
-      env:
-        SSH_PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+      - name: Add identity file
+        run: echo "${{ secrets.PRIVATE_KEY }}" >> $HOME/deploy.key
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
       - run: chmod 600 $HOME/deploy.key
       - run: eval $(ssh-agent -s)
       - run: ssh-add $HOME/deploy.key
       - run: mkdir -p $HOME/.ssh && chmod 700 $HOME/.ssh
       - run: touch $HOME/.ssh/known_hosts && chmod 644 $HOME/.ssh/known_hosts
-    - name: Keyscan
-      run: ssh-keyscan 143.198.179.23 >> $HOME/.ssh/known_hosts
+      - name: Keyscan
+        run: ssh-keyscan 143.198.179.23 >> $HOME/.ssh/known_hosts
       - run: rsync -e "ssh -i $HOME/deploy.key" -rzcEl . root@143.198.179.23:/var/www/html --exclude-from=".rsyncignore" --checksum --delete
