@@ -31,4 +31,4 @@ jobs:
       - name: Keyscan
         run: ssh-keyscan 143.198.179.23 >> $HOME/.ssh/known_hosts
       - run: rsync -e "ssh -i $HOME/deploy.key" -rzcEl . root@143.198.179.23:/var/www/html --exclude-from=".rsyncignore" --checksum --delete
-      - run ssh root@143.198.179.23 'php /var/www/html/vendor/bin/drush deploy --yes'
+      - run: ssh root@143.198.179.23 'php /var/www/html/vendor/bin/drush deploy --yes'
