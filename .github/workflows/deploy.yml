@@ -21,9 +21,9 @@ jobs:
           tools: composer:v2
       - run: composer install
       - name: Add identity file
-        run: echo "${{ secrets.PRIVATE_KE }}" >> $HOME/deploy.key
+        run: echo "${{ secrets.PRIVATE_KEY }}" >> $HOME/deploy.key
         env:
-          SSH_PRIVATE_KEY: ${{ secrets.PRIVATE_KE }}
+          SSH_PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
       - run: chmod 600 $HOME/deploy.key
       - run: eval $(ssh-agent -s)
       - run: echo "ssh validado"
