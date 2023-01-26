@@ -26,6 +26,7 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
       - run: chmod 600 $HOME/deploy.key
       - run: eval $(ssh-agent -s)
+      - run: echo "ssh validado"
       - run: mkdir -p $HOME/.ssh && chmod 700 $HOME/.ssh
       - run: touch $HOME/.ssh/known_hosts && chmod 644 $HOME/.ssh/known_hosts
       - name: Keyscan
