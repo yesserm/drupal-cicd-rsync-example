@@ -2,7 +2,7 @@ _core:
   default_config_hash: VDJxTZtQR21qB4lvOq8zszJZLvLKrSPQpdn2E3T71Ww
 langcode: es
 uuid: 4527c7cd-b6c4-4a8f-ba26-120c83f28069
-name: 'CI/CD Test'
+name: 'URACCAN CI/CD Test'
 mail: admin@example.com
 slogan: ''
 page:
